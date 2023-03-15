@@ -1,0 +1,439 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/updatecampaign":
+    post:
+tags:
+  - campaigns
+summary: "Редактировать кампанию"
+description: "Редактировать существующую кампанию"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "asdfrefefevmk2erf"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "XaVUPZ0Js7nP33RPyqTbVQpcXUUd8zLH1SvTb89fnp6tQn9V6YRrLd5WVd"
+        description: Access token
+      campaign_id:
+        type: "integer"
+        example: 12345
+        description: Идентификатор кампании
+      t_age_list:
+        type:
+          - array
+            - integer
+        example: [ 18, 20 ]
+        description: Возраст (список возрастов). 0 - показывать тем, чей возраст не определён. max_value=79
+      t_age_expand:
+        type: "string"
+        example: "true"
+        enum:
+          - "true"
+          - "false"
+        description: Возраст (список возрастов). Расширять ограничения
+      t_birthday_days_after:
+        type: "integer"
+        example: 3
+        description: День рождения. Дней после дня рождения. max_value=30
+      t_birthday_days_before:
+        type: "integer"
+        example: 7
+        description: День рождения. Дней до дня рождения. max_value=30
+      t_fulltime_flags:
+        type:
+          - array
+            - string
+        example: [ "use_holidays_moving", "cross_timezone" ]
+        enum:
+          - "use_holidays_moving"
+          - "cross_timezone"
+        description: Время (дни и часы). use_holidays_moving - Учитывать перенос праздничных дней cross_timezone - Учитывать временные зоны
+      t_fulltime_fri:
+        type:
+          - array
+            - integer
+        example: [ 0, 1, 2, 3, 4 ]
+        description: Время (дни и часы). Часы в пятницу. max_value=23
+      t_fulltime_mon:
+        type:
+          - array
+            - integer
+        example: [ 5, 6, 7, 8, 9, 10 ]
+        description: Время (дни и часы). Часы в понедельник. max_value=23
+      t_fulltime_sat:
+        type:
+          - array
+            - integer
+        example: [ 18, 19, 20 ]
+        description: Время (дни и часы). Часы в субботу. max_value=23
+      t_fulltime_sun:
+        type:
+          - array
+            - integer
+        example: [ 18, 19, 20 ]
+        description: Время (дни и часы). Часы в воскресенье. max_value=23
+      t_fulltime_thu:
+        type:
+          - array
+            - integer
+        example: [ 22, 23 ]
+        description: Время (дни и часы). Часы в четверг. max_value=23
+      t_fulltime_tue:
+        type:
+          - array
+            - integer
+        example: [ 12, 13, 14 ]
+        description: Время (дни и часы). Часы во вторник. max_value=23
+      t_fulltime_wed:
+        type:
+          - array
+            - integer
+        example: [ 15 ]
+        description: Время (дни и часы). Часы в среду. max_value=23
+      t_geo_regions:
+        type:
+          - array
+            - integer
+        example: [ 53, 54 ]
+        description: Общий таргетинг географии, объединяющий геолокации и регионы (список идентификаторов регионов). Возможна установка только одного из значений - local_geo или regions.
+      t_geo_local_type:
+        type:
+          - array
+            - string
+        example: [ "home" ]
+        enum:
+          - "home"
+          - "work"
+        description: Таргетинг на геолокации. Время посещения.
+      t_geo_local_visit_type:
+        type: "string"
+        example: "all"
+        enum:
+          - "now"
+          - "usual"
+          - "all"
+        description: Таргетинг на геолокации. Тип посещения.
+      t_geo_local_addresses:
+        type:
+          - array
+            - string
+        example: [ ]
+        description: Таргетинг на геолокации. Адреса точек.
+      t_geo_local_labels:
+        type:
+          - array
+            - string
+        example: [ ]
+        description: Таргетинг на геолокации. Названия точек.
+      t_geo_local_lats:
+        type:
+          - array
+            - float
+        example: [ 55.755864, 60.0762383 ]
+        description: Таргетинг на геолокации. Список с широтами.
+      t_geo_local_lngs:
+        type:
+          - array
+            - float
+        example: [ 37.617698, 30.1213829 ]
+        description: Таргетинг на геолокации. Список с долготой.
+      t_geo_local_rads:
+        type:
+          - array
+            - integer
+        example: [ 100, 150 ]
+        description: Таргетинг на геолокации. Список радиусов, в метрах.
+      t_group_members:
+        type: "string"
+        example: "all"
+        enum:
+          - "all"
+          - "group_member"
+          - "not_group_member"
+        description: Вхождение в группу ОК/VK.
+      t_interests:
+        type:
+          - array
+            - integer
+        example: [ 10257, 8490 ]
+        description: Интересы пользователей.
+      t_interests_soc_dem:
+        type:
+          - array
+            - integer
+        example: [ 7328 ]
+        description: Социально-демографические интересы пользователей.
+      t_interests_stable:
+        type:
+          - array
+            - integer
+        example: [ ]
+        description: Долгосрочные интересы пользователей
+      t_mobile_apps:
+        type: "string"
+        example: "never_installed"
+        enum:
+          - "never_installed"
+          - "now"
+          - "deleted"
+        description: Установленность приложений.
+      t_mobile_operation_systems:
+        type:
+          - array
+            - integer
+        example: [ 1,2 ]
+        description: Мобильные операционные системы.
+      t_mobile_operators:
+        type:
+          - array
+            - integer
+        example: [ 1, 2, 3 ]
+        description: Операторы мобильной связи.
+      t_mobile_prefix:
+        type:
+          - array
+            - string
+        example: [ "megafon", "mts" ]
+        enum:
+          - "mts"
+          - "beeline"
+          - "megafon"
+        description: Мобильные префиксы. Доступные префиксы mts, beeline, megafon.
+      t_mobile_types:
+        type:
+          - array
+            - string
+        example: [ "tablets", "smartphones" ]
+        description: Типы мобильных устройств.
+      t_mobile_vendors:
+        type:
+          - array
+            - integer
+        example: [ 1, 2, 3 ]
+        description: Производители мобильных устройств.
+      t_pad_category_android:
+        type:
+          - array
+            - integer
+        example: [ ]
+        description: Таргетинг на категорию приложения. Список идентификаторов категорий приложений Android.
+      t_pad_category_ios:
+        type:
+          - array
+            - integer
+        example: [ ]
+        description: Таргетинг на категорию приложения. Список идентификаторов категорий приложений iOS.
+      t_pads:
+        type:
+          - array
+            - integer
+        example: [ ]
+        description: Рекламные площадки. Доступные площадки определены в пакете кампании
+      t_regions:
+        type:
+          - array
+            - integer
+        example: [ 53, 54 ]
+        description: Регионы (список идентификаторов регионов).
+      t_segments:
+        type:
+          - array
+            - integer
+        example: [ 243 ]
+        description: Вхождение в аудиторные сегменты
+      t_sex:
+        type:
+          - array
+            - string
+        example: [ "male" ]
+        enum:
+          - "male"
+          - "female"
+        description: Пол (сочетания ‘male’ — мужской, ‘female’ — женский)
+      t_sk_ad_network_app_url_id:
+        type: "integer"
+        example: 123
+        description: ID URL связанного с кампанией iOS-приложения
+      t_sk_ad_network_mobile_operation_systems_ids:
+        type:
+          - array
+            - integer
+        example: [ 4, 5, 6 ]
+        description: Идентификаторы мобильных операционных систем. Нельзя использовать те же операционные системы, что уже использованы в таргетинге mobile_operation_system
+      name:
+        type: "string"
+        example: "Кампания 1"
+        description: Название кампании. (обязательный параметр)
+      package_id:
+        type: "integer"
+        example: 2933
+        description: Идентификатор пакета. (обязательный параметр)
+      objective:
+        type: "string"
+        example: "general_ttm"
+        description: Цель рекламной кампании. (обязательный параметр)
+      age_restrictions:
+        type: "string"
+        example: "18+"
+        description: Возрастные ограничения.
+      audit_pixels_urls:
+        type:
+          - array
+            - string
+        example: [ ]
+        description: Ссылки на аудит пиксели
+      audit_pixels_roles:
+        type:
+          - array
+            - string
+        example: [ ]
+        description: Список событий, на которое будет срабатывать пиксель аудита
+      autobidding_mode:
+        type: "string"
+        example: "fixed"
+        enum:
+          - "fixed"
+          - "second_price"
+          - "second_price_mean"
+          - "max_shows"
+          - "max_goals"
+        description: Аукционная стратегия. fixed - фиксированная ставка (переходы будут оплачиваться по указанной ставке, независимо от конкурентной ситуации), second_price - минимальный расход (указывается максимальная ставка, если позволяет конкуренция, сервис автоматически её понижает), second_price_mean - максимальное число переходов (указывается средняя ставка, сервис обеспечит максимальное число переходов), max_shows - максимум показов за бюджет (особенности - нет ставки, должен быть задан общий бюджет и период работы РК или дневной бюджет), max_goals - максимизация цели (особенности - нет ставки, должен быть задан общий бюджет и период работы РК или дневной бюджет)
+      banner_uniq_shows_limit:
+        type: "integer"
+        example: 10
+        description: Количество уникальных показов для баннеров
+      budget_limit:
+        type: "float"
+        example: 1000
+        description: Общий бюджет кампании
+      budget_limit_day:
+        type: "float"
+        example: 100
+        description: Бюджет кампании на день
+      date_end:
+        type: "string"
+        example: "2023-03-01"
+        description: формат YYYY-MM-DD. Дата окончания кампании.
+      date_start:
+        type: "string"
+        example: "2023-02-15"
+        description: формат YYYY-MM-DD. Дата старта кампании.
+      dynamic_banners_use_storelink:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Отображать ли deeplink в мобильном динамическом ремаркетинге.
+      dynamic_without_remarketing:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Возможность показывать баннеры динамического ремаркетинга без наличия событий динамического ремаркетинга.
+      enable_offline_goals:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Учитывать оффлайн конверсии для кампании
+      enable_utm:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Добавлять ли UTM-метки в URL объявлений
+      language:
+        type: "string"
+        example: "ru"
+        enum:
+          - "en"
+          - "ru"
+        description: Язык креативов в кампании
+      marketplace_app_client_id:
+        type: "string"
+        example: "123"
+        description: ID приложения, которое будет управлять кампанией
+      max_price:
+        type: "float"
+        example: 10.5
+        description: Верхняя граница для автоматического регулирования цены
+      mixing:
+        type: "string"
+        example: "recommended"
+        enum:
+          - "recommended"
+          - "fastest"
+        description: Распределение бюджета. recommended - равномерное (доступно если выставлен ежедневный бюджет или выставлен общий бюджет с периодом работы рекламной кампании) fastest - быстрое
+      price:
+        type: "float"
+        example: 10.5
+        description: Цена за одно событие. Тип события определяется пакетом кампании
+      priced_goal_name:
+        type: "string"
+        example: ""
+        description: Оплата по целям ТОПа/событиям в мобильном приложении. Имя события или идентификатор цели в формате condition:substr
+      priced_goal_source_id:
+        type: "integer"
+        example: 12345
+        description: Оплата по целям ТОПа/событиям в мобильном приложении. ID трекера события в мобильном приложении или ID счетчика Top@Mail.ru
+      pricelist_id:
+        type: "integer"
+        example: 12345
+        description: Идентификатор ремаркетингового прайс-листа
+      social:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Признак, что это "Социальная реклама" (для передачи в ОРД)
+      status:
+        type: "string"
+        example: "active"
+        enum:
+          - "active"
+          - "deleted"
+          - "blocked"
+        description: Статус кампании. Так же может возвращаться статус deleted для удаленных кампаний. В кампании со статусом deleted возможно изменить только сам статус
+      uniq_shows_limit:
+        type: "integer"
+        example: 10
+        description: Количество уникальных показов
+      uniq_shows_period:
+        type: "string"
+        example: "day"
+        enum:
+          - "day"
+          - "week"
+          - "month"
+          - "eternity"
+        description: Периоды для показов
+      utm:
+        type: "string"
+        example: ""
+        description: UTM-метки для добавления в URL объявлений. Если не указаны и enable_utm=true, то метки будут формироваться автоматически. Если enable_utm=false – метки не будут добавляться в URL объявлений даже если указаны
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

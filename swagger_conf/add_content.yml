@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/addurl":
+    post:
+tags:
+  - content
+summary: "Загрузить креативы"
+description: "Ресурс, позволяющий загружать креативы, которые в дальнейшем могут быть использованы в рекламных объявлениях."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "awev23rds23"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "asddfg22emn2ej0983e47"
+        description: Access token
+      content_type:
+        type: "string"
+        example: "static"
+        enum:
+          - "static"
+          - "video"
+          - "html5"
+        description: Тип загружаемого контента
+      file_string:
+        type: "string"
+        example: ""
+        description: Данные файла.
+      filename:
+        type: "string"
+        example: "image.jpg"
+      width:
+        type: "integer"
+        example: 300
+        description: Ширина исходного креатива. (Для типов static и video)
+      height:
+        type: "integer"
+        example: 300
+        description: Высота исходного креатива. (Для типов static и video)
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

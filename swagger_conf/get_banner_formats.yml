@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/getbannerformats":
+    post:
+tags:
+  - info
+summary: "Получение информации о баннерных форматах"
+description: "Ресурс, предоставляющий информацию о баннерных форматах. Баннерный формат это набор требований, которым должен соответствовать баннер, создаваемый внутри рекламной кампании на основании пакета, с указанным баннерным форматом."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "awev23rds23"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "asddfg22emn2ej0983e47"
+        description: Access token
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

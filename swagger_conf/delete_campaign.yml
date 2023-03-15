@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/deletecampaign":
+    post:
+tags:
+  - campaigns
+summary: "Удалить кампанию"
+description: "Ресурс позволяющий удалить рекламную кампанию"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "awev23rds23"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "asddfg22emn2ej0983e47"
+        description: Access token
+      campaign_id:
+        type: "integer"
+        example: 12345
+        description: Идентификатор кампании
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

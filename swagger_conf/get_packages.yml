@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/getpackages":
+    post:
+tags:
+  - info
+summary: "Получить информацию о пакетах"
+description: "Ресурс, позволяющий собрать информацию о пакетах. Пакет — это набор характеристик услуг, предоставляемых пользователю в рамках рекламных кампаний. Например, пакет определяет список доступных таргетингов и набор площадок, на которых будут показываться объявления. Идентификатор пакета необходим для создания рекламной кампании."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "awev23rds23"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "asddfg22emn2ej0983e47"
+        description: Access token
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/getcampaigns":
+    post:
+tags:
+  - campaigns
+summary: "Получить кампании"
+description: "Получить список существующих рекламных кампаний"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "eGpvC1xm4t5lpdog"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "XaVUPZ0Js7nP33RPyqTbVQC9ZrKm7mxOUdcpOd4IYDYa1O2V39MGytr7bkverAh2qqddTWzb9TlUQGMDvFsJMxCnNycqNJSqLEgemSKKOSRBDS03u8DW8PJCrGkZ9qiH5LpcXUUdjDRf0AuB7SuAFwzyD0G3kKtnsdFM5DMSNDkG6RlwJ9MLW1cMu2nnzidSrnH8zLH1SvTb89fnp6tQn9V6YRrLd5WVd"
+        description: Access token
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

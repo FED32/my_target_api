@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/getpadstrees":
+    post:
+tags:
+  - info
+summary: "Получить информацию о деревьях площадок, используемых в таргетинге на места размещений (pads) при создании кампаний"
+description: "Ресурс, предоставляющий информацию о деревьях площадок, используемых в таргетинге на места размещений (pads) при создании кампаний. Дерево площадок необходимо для визуализации связи площадок, представленных id в конечных узлах, и физических мест размещений, представленных во внутренних узлах дерева."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "awev23rds23"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "asddfg22emn2ej0983e47"
+        description: Access token
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

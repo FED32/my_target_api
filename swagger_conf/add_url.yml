@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/addurl":
+    post:
+tags:
+  - urls
+summary: "Создать url и отправить его на проверку"
+description: "Запрос создает новый объект URL в системе и отправляет его на проверку. Проверка считается законченной, когда у объекта URL заполняется поле url_types."
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "awev23rds23"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "asddfg22emn2ej0983e47"
+        description: Access token
+      url:
+        type: string
+        example: "https://www.site.com"
+        description: Ссылка, обязательно в схеме http:// или https://
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"

@@ -1,0 +1,472 @@
+swagger: "2.0"
+info:
+  title: "My Target GTCOM API Documentation"
+  contact:
+    email: "s.fedyushin@gtcom.io"
+  basePath: "/swagger"
+paths:
+  "/mytarget/addbanner":
+    post:
+tags:
+  - banners
+summary: "Создать объявление"
+description: "Создать объявление внутри кампании"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  required: true
+  schema:
+    type: "object"
+    properties:
+      client_id:
+        type: "string"
+        example: "eGpvC1xm4t5lpdog"
+        description: Client id
+      access_token:
+        type: "string"
+        example: "LpcXUUdjDRf0AuB7SuAFwzyD0G3kKtnsdFM5DMSNDkG6RlwJ9MLW1cMu2nnzidSrnH8zLH1SvTb89fnp6tQn9V6YRrLd5WVd"
+        description: Access token
+      campaign_id:
+        type: "integer"
+        example: 12345
+        description: Идентификатор рекламной кампании.
+      content_icon_id:
+        type: "integer"
+        example: 12345
+        description: Для типов videobanner_fulscreen, videobanner_nativeroll, mobile_hls_video_app_store_square, video_app_install_1080x607, videobanner_nativeroll_square, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, videobanner_nativeroll_6с, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, videobanner_nativeroll_square_6с, mobile_hls_video_square_deeplink_test, vertical_video_for_sites_9_16, videobanner_supervideo, ok_opros, video_app_install_1080x607_deeplink
+      content_overlay_id:
+        type: "integer"
+        example: 12345
+        description: Для типов videobanner_fulscreen, mobile_hls_video_app_store_square, video_app_install_1080x607, ok_vitrina, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, mobile_hls_video_square_deeplink_test, vertical_video_for_sites_9_16, video_app_install_1080x607_deeplink
+      content_video_id:
+        type: "integer"
+        example: 12345
+        description: Для типов videobanner_fulscreen, video_240x400_content, videobanner_nativeroll, video_240x400, video_300x300, mobile_hls_video_app_store_square, video_app_install_1080x607, video_preroll_content_cross_platform, ok_vitrina, videobanner_nativeroll_square, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, videobanner_nativeroll_6с, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, videobanner_preroll_6c, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, videobanner_nativeroll_square_6с, mobile_hls_video_square_deeplink_test, video_settings_240x400, mobile_hls_video_vertical_9_16, vertical_video_for_sites_9_16, video_app_install_1080x607_deeplink, Copy172
+      content_super_video_id:
+        type: "integer"
+        example: 12345
+        description: Для типов videobanner_supervideo
+      content_header_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов Carousel content apps, mobile_carousel_test, Carousel content sites, Carousel content apps (with deeplinks), carousel_ali, carousel news sites, Like a Apple Store, Like a Google Play
+      content_slide_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test, carousel_ali
+      content_slides_images_ids:
+        type:
+          - array
+            - integer
+        example: [12345, 67890]
+        description: Для типов Carousel content apps, Carousel content sites, Carousel content apps (with deeplinks), carousel news sites, Like a Apple Store, Like a Google Play
+      content_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_universal_apps_content, cover_new, ugc_overlay_banner, ok_mm_feed_1080х607, teaser_90_75, mobile_universal_apps_deeplink, mobile_universal_apps, mobile_universal_site, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, cross_platform_multiformat, 240x400_img_content, cross_platform_multiformat_net, multiformat_lead_ads, 300x300_img_content, 500x200_img_content, Teaser_90x90, mir_multi, mobile_universal_apps_deeplink_external_new, Ok_games_all, Mob_fullscreen_media, Mob_640x100, news_teaser_top, news_teaser_bottom, Youla_button, 300x250_img_content, 90х90 about_company, тизер 200x120, banner_for_alli, multiformat_nativeroll, html5_nativeroll, 2048x1280_img, image_2048x1280_dc, test_dynrem_multi, audio_old, multi_apps_test, audio_with_picture, new_teaser_no_format, square_image_for_ali_no_format, image_240x400+728x90_no_format, copy113, copy225
+      content_promo_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_universal_apps_content, ok_mm_feed_1080х607, mobile_universal_apps_deeplink, mobile_universal_apps, mobile_universal_site, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, cross_platform_multiformat, cross_platform_multiformat_net, multiformat_lead_ads, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, mir_multi, mobile_universal_apps_deeplink_external_new, Ok_games_all, ok_opros, multiformat_nativeroll, test_dynrem_multi, multi_apps_test, copy113, copy203
+      content_background_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов video_240x400, video_300x300, Copy172
+      content_icon_square_id:
+        type: "integer"
+        example: 12345
+        description: Для типов cross_platform_multiformat, cross_platform_multiformat_net, multiformat_lead_ads
+      content_image_vertical_id:
+        type: "integer"
+        example: 12345
+        description: Для типов cross_platform_multiformat_net
+      content_promo_image_vertical_id:
+        type: "integer"
+        example: 12345
+        description: Для типов Mob_fullscreen_media
+      content_logo_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      content_logo_id:
+        type: "integer"
+        example: 12345
+        description: Для типов news_teaser_top, news_teaser_bottom, copy225
+      content_tpl_background_image_id:
+        type: "integer"
+        example: 12345
+        description: Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      content_tpl_background_image_300_id:
+        type: "integer"
+        example: 12345
+        description: Для типов 240x400_300x300_500x200_dynamic_content, copy203
+      content_cover_id:
+        type: "integer"
+        example: 12345
+        description: mir_multi, Ok_games_all
+      content_audio_id:
+        type: "integer"
+        example: 12345
+        description: Для типов audio_banner, audio_old, audio_with_picture
+      content_mail_main_id:
+        type: "integer"
+        example: 12345
+        description:
+      content_vk_feed_id:
+        type: "integer"
+        example: 12345
+        description:
+      urls_primary_id:
+        type: "integer"
+        example: 12345
+        description: Для типов videobanner_fulscreen, video_240x400_content, mobile_universal_apps_content, ugc_overlay_banner, cover_new, ok_mm_feed_1080х607, teaser_90_75, mobile_universal_apps_deeplink, mobile_universal_apps, videobanner_nativeroll, mobile_universal_site, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, video_240x400, video_300x300, youla_post, mobile_hls_video_app_store_square, video_app_install_1080x607, cross_platform_multiformat, vk_cross_topics, 240x400_img_content, cross_platform_multiformat_net, multiformat_lead_ads, video_preroll_content_cross_platform, odkl_topic_all, 300x300_img_content, 500x200_img_content, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, Teaser_90x90, mir_multi, videobanner_supervideo, ok_vitrina, mobile_universal_apps_deeplink_external_new, videobanner_nativeroll_square, Ok_games_all, Mob_fullscreen_media, Mob_640x100, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, videobanner_nativeroll_6с, news_teaser_top, news_teaser_bottom, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, videobanner_preroll_6c, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, videobanner_nativeroll_square_6с, mobile_hls_video_square_deeplink_test, Youla_button, 300x250_img_content, 90х90 about_company, тизер 200x120, ok_opros, Copy172, dooh_video, banner_for_alli, BumperAds, mobile_hls_video_vertical_9_16, vertical_video_for_sites_9_16, multiformat_nativeroll, 2048x1280_img, image_2048x1280_dc, test_dynrem_multi, audio_old, multi_apps_test, audio_with_picture, video_app_install_1080x607_deeplink, new_teaser_no_format, square_image_for_ali_no_format, image_240x400+728x90_no_format, copy113, copy203, copy188, copy198, copy225
+      urls_header_click_id:
+        type: "integer"
+        example: 12345
+        description: Для типов Carousel content apps, Carousel content sites, Carousel content apps (with deeplinks), carousel news sites, Like a Apple Store, Like a Google Play
+      urls_slide_clicks_ids:
+        type:
+          - array
+            - integer
+        example: [12345, 67890]
+        description: Для типов Carousel content apps, Carousel content sites, Carousel content apps (with deeplinks), carousel news sites
+      urls_slide_deeplinks_ids:
+        type:
+          - array
+            - integer
+        example: [12345, 67890]
+        description: Для типов Carousel content apps (with deeplinks)
+      urls_ok_id:
+        type: "integer"
+        example: 12345
+        description: Для типов ok_vk_cross_topics
+      urls_vk_id:
+        type: "integer"
+        example: 12345
+        description: Для типов ok_vk_cross_topics
+      urls_links_ids:
+        type:
+          - array
+            - integer
+        example: [12345, 67890]
+        description: Для типов 240x400_html5, 300x300_html5, 240x400_html5, 100%x200_html5, 300x250_html5, 100%x100%_html5, 300x600_html5, 100%x250_html5, html5_nativeroll
+      urls_link1_id:
+        type: "integer"
+        example: 12345
+        description: Для типов news_teaser_bottom, copy225
+      urls_deeplink_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_universal_apps_deeplink
+      urls_android_store_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test
+      urls_android_tracking_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test
+      urls_android_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, carousel_ali, test_dynrem_multi, copy203
+      urls_ios_store_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test
+      urls_ios_tracking_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test
+      urls_ios_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, carousel_ali, test_dynrem_multi, copy203
+      urls_shopitem_url_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, carousel_ali, test_dynrem_multi, copy203
+      urls_slide_click_id:
+        type: "integer"
+        example: 12345
+        description: Для типов mobile_carousel_test, carousel_ali
+      urls_logo_link_id:
+        type: "integer"
+        example: 12345
+        description: Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      textblocks_primary_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов videobanner_fulscreen, mobile_universal_apps_content, ok_mm_feed_1080х607, teaser_90_75, mobile_universal_apps_deeplink, mobile_universal_apps, videobanner_nativeroll, mobile_universal_site, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, mobile_hls_video_app_store_square, video_app_install_1080x607, cross_platform_multiformat, cross_platform_multiformat_net, multiformat_lead_ads, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, Teaser_90x90, mir_multi, videobanner_supervideo, ok_vitrina, mobile_universal_apps_deeplink_external_new, videobanner_nativeroll_square, Ok_games_all, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, videobanner_nativeroll_6с, news_teaser_bottom, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, videobanner_nativeroll_square_6с, mobile_hls_video_square_deeplink_test, Youla_button, 90х90 about_company, тизер 200x120, ok_opros, mobile_hls_video_vertical_9_16, vertical_video_for_sites_9_16, multiformat_nativeroll, html5_nativeroll, test_dynrem_multi, multi_apps_test, video_app_install_1080x607_deeplink, new_teaser_no_format, copy113, copy203, copy225
+      textblocks_primary_title:
+        type: "string"
+        example: "абв abc"
+        description: Для типов videobanner_fulscreen, mobile_universal_apps_content, ok_mm_feed_1080х607, teaser_90_75, mobile_universal_apps_deeplink, mobile_universal_apps, videobanner_nativeroll, mobile_universal_site, teaser_90_75_dynamic_content, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, mobile_hls_video_app_store_square, video_app_install_1080x607, cross_platform_multiformat, cross_platform_multiformat_net, multiformat_lead_ads, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, Teaser_90x90, mir_multi, videobanner_supervideo, ok_vitrina, mobile_universal_apps_deeplink_external_new, DSP, videobanner_nativeroll_square, Ok_games_all, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, videobanner_nativeroll_6с, news_teaser_top, news_teaser_bottom, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, videobanner_nativeroll_square_6с, mobile_hls_video_square_deeplink_test, Youla_button, 90х90 about_company, тизер 200x120, ok_opros, mobile_hls_video_vertical_9_16, vertical_video_for_sites_9_16, multiformat_nativeroll, html5_nativeroll, test_dynrem_multi, multi_apps_test, video_app_install_1080x607_deeplink, copy113, copy203, copy225
+      textblocks_header_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов Carousel content apps, mobile_carousel_test, Carousel content sites, Carousel content apps (with deeplinks), carousel_ali, carousel news sites
+      textblocks_header_title:
+        type: "string"
+        example: "абв abc"
+        description: Для типов Carousel content apps, mobile_carousel_test, Carousel content sites, Carousel content apps (with deeplinks), carousel_ali, carousel news sites, Like a Apple Store, Like a Google Play
+      textblocks_header_button_text:
+        type: "string"
+        example: "абв abc"
+        enum:
+          - "install"
+          - "to_shop"
+          - "signUp"
+          - "choose"
+          - "book"
+          - "download"
+          - "order"
+          - "enroll"
+          - "register"
+          - "playGame"
+          - "buy"
+          - "buy_ticket"
+          - "see_menu"
+          - "begin"
+          - "open"
+          - "visitSite"
+          - "apply"
+          - "learnMore"
+          - "call"
+          - "get"
+          - "try"
+          - "listen"
+          - "watch"
+          - "create"
+          - "learn"
+        description: Для типов Carousel content apps, Carousel content apps (with deeplinks), carousel news sites
+      textblocks_slides_texts:
+        type:
+          - array
+            - string
+        example: ["абв где", "abc def"]
+        description: Для типов Carousel content apps, Carousel content sites, Carousel content apps (with deeplinks)
+      textblocks_slides_titles:
+        type:
+          - array
+            - string
+        example: [ "абв где", "abc def" ]
+        description: Для типов Carousel content apps, Carousel content sites, Carousel content apps (with deeplinks), carousel news sites
+      textblocks_about_company_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов 240x400_html5, 300x300_html5, teaser_90_75, mobile_universal_apps_deeplink, mobile_carousel_test, videobanner_nativeroll, teaser_90_75_dynamic_content, ok_mm_feed_1080х607_dynamic_content, video_240x400, video_300x300, cross_platform_multiformat, Carousel content sites, 240x400_img_content, cross_platform_multiformat_net, multiformat_lead_ads, 100%x200_html5, 300x250_html5, 300x300_img_content, 500x200_img_content, 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, videobanner_supervideo, Mob_fullscreen_media, Mob_640x100, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, 300x600_html5, Youla_button, 300x250_img_content, 90х90 about_company, тизер 200x120, Copy172, vertical_video_for_sites_9_16, multiformat_nativeroll, html5_nativeroll, test_dynrem_multi, image_240x400+728x90_no_format, copy203
+      textblocks_slide_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов mobile_carousel_test, carousel_ali
+      textblocks_slide_title:
+        type: "string"
+        example: "абв abc"
+        description: Для типов mobile_carousel_test, carousel_ali
+      textblocks_slide_button_text:
+        type: "string"
+        example: "абв abc"
+        enum:
+          - "buy"
+          - "to_shop"
+          - "signUp"
+          - "choose"
+          - "book"
+          - "download"
+          - "order"
+          - "enroll"
+          - "register"
+          - "playGame"
+          - "buy_ticket"
+          - "see_menu"
+          - "begin"
+          - "open"
+          - "visitSite"
+          - "apply"
+          - "learnMore"
+          - "call"
+          - "get"
+          - "try"
+          - "listen"
+          - "watch"
+          - "create"
+          - "learn"
+          - "install"
+        description: Для типов mobile_carousel_test
+      textblocks_button_title_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      textblocks_link_title_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, vertical_video_for_sites_9_16
+      textblocks_billboard_video_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов dooh_video
+      textblocks_position_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов 2048x1280_img, image_2048x1280_dc
+      textblocks_tags_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов 2048x1280_img
+      textblocks_selection_text:
+        type: "string"
+        example: "абв abc"
+        description: Для типов image_2048x1280_dc
+      products_appearance_name:
+        type: "string"
+        example: "#252525"
+        description: Настройка внешнего вида. Задает цвет. Название продукта. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_price:
+        type: "string"
+        example: "#fc2c39"
+        description: Настройка внешнего вида. Задает цвет. Цена. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_button:
+        type: "string"
+        example: "#ffffff"
+        description: Настройка внешнего вида. Задает цвет. Текст кнопки. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_button_bg:
+        type: "string"
+        example: "#00abf2"
+        description: Настройка внешнего вида. Задает цвет. Фон кнопки. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_borders_inside:
+        type: "string"
+        example: "#dddddd"
+        description: Настройка внешнего вида. Задает цвет. Цвет разделительных линий. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_border:
+        type: "string"
+        example: "#959595"
+        description: Настройка внешнего вида. Задает цвет. Цвет рамки баннера. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_logo_bg:
+        type: "string"
+        example: "#ffffff"
+        description: Настройка внешнего вида. Задает цвет. Фон под логотипом. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_banner_bg:
+        type: "string"
+        example: "#ffffff"
+        description: Настройка внешнего вида. Задает цвет. Фон всего баннера. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_appearance_title:
+        type: "string"
+        example: "#252525"
+        description: Настройка внешнего вида. Задает цвет. Заголовок. Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_zoom:
+        type: "string"
+        example: "true"
+        enum:
+          - "true"
+          - "false"
+        description: Увеличивать ли товар при наведении на него. Помимо этого zoom работает в фоновом режиме поочередно для каждого товара (каждые 5 секунд). Для типов 240x400_300x300_500x200_dynamic_content, 240x400_dynamic_content_new_textblocks, copy203
+      products_template_type:
+        type: "string"
+        example: "1_product"
+        enum:
+          - "1_product"
+          - "2_product"
+          - "4_product"
+        description: Тип шаблона отображения. Для типов 240x400_dynamic_content_new_textblocks, 240x400_300x300_500x200_dynamic_content, copy203
+      call_to_action:
+        type: "string"
+        example: "install"
+        enum:
+          - "visitSite"
+          - "to_shop"
+          - "signUp"
+          - "choose"
+          - "book"
+          - "download"
+          - "order"
+          - "enroll"
+          - "register"
+          - "playGame"
+          - "buy"
+          - "buy_ticket"
+          - "see_menu"
+          - "begin"
+          - "open"
+          - "apply"
+          - "learnMore"
+          - "call"
+          - "get"
+          - "try"
+          - "listen"
+          - "watch"
+          - "create"
+          - "learn"
+          - "install"
+          - "contactUs"
+        description: Действие при клике по баннеру. Для типов videobanner_fulscreen, mobile_universal_apps_content, teaser_90_75, mobile_universal_apps_deeplink, mobile_universal_apps, videobanner_nativeroll, mobile_universal_site, mobile_640x360_dynamic_content, ok_mm_feed_1080х607_dynamic_content, mobile_hls_video_app_store_square, video_app_install_1080x607, cross_platform_multiformat, cross_platform_multiformat_net, multiformat_lead_ads, videobanner_supervideo, mobile_universal_apps_deeplink_external_new, videobanner_nativeroll_square, video_autoplay_mobile, mobile_hls_video_square_deeplink, mobile_hls_video_vertical, playable_ads, videobanner_nativeroll_6с, horizontal_video_for_sites_16_9, square_video_for_sites_1_1, vertical_video_for_sites_4_5, ok_game_square_video, ok_game_vertical_video, ok_game_horizontal_video, Like a Apple Store, Like a Google Play, videobanner_nativeroll_square_6с, mobile_hls_video_square_deeplink_test, ok_opros, mobile_hls_video_vertical_9_16, vertical_video_for_sites_9_16, multiformat_nativeroll, html5_nativeroll, test_dynrem_multi, multi_apps_test, video_app_install_1080x607_deeplink, copy113
+      deeplink:
+        type: "string"
+        example: ""
+        description: Deeplink ссылка. Для типов mobile_universal_apps_deeplink, mobile_universal_apps_deeplink_external_new, mobile_hls_video_square_deeplink, mobile_hls_video_square_deeplink_test, 2048x1280_img
+      name:
+        type: "string"
+        example: "Баннер 1"
+        description: Название баннера.
+      status:
+        type: "string"
+        example: "active"
+        enum:
+          - "active"
+          - "deleted"
+          - "blocked"
+        description: Статус объявления.
+      video_params_autoplay:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Видео параметр объявления. Запускать ли видео автоматически. Для типов video_240x400, video_300x300, Copy172
+      video_params_height:
+        type: "integer"
+        example: 135
+        description: Видео параметр объявления. Высота видео. Для типов video_240x400, video_300x300, Copy172
+      video_params_loop:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Видео параметр объявления. Зациклить ли видео. Для типов video_240x400, video_300x300, Copy172
+      video_params_over_video:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Видео параметр объявления. Подложка поверх видео. Для типов video_240x400, video_300x300, Copy172
+      video_params_sound_delay:
+        type: "string"
+        example: "false"
+        enum:
+          - "true"
+          - "false"
+        description: Видео параметр объявления. Звук по наведению через 3 секунды. Для типов video_240x400, video_300x300, Copy172
+      video_params_video_x:
+        type: "integer"
+        example: 0
+        description: Видео параметр объявления. Смещение видео по горизонтали. Для типов video_240x400, video_300x300, Copy172
+      video_params_video_y:
+        type: "integer"
+        example: 150
+        description: Видео параметр объявления. Смещение видео по вертикали. Для типов video_240x400, video_300x300, Copy172
+      video_params_width:
+        type: "integer"
+        example: 240
+        description: Видео параметр объявления. Ширина видео. Для типов video_240x400, video_300x300, Copy172
+responses:
+  200:
+    description: "OK"
+  400:
+    description: "Bad Request"
+
