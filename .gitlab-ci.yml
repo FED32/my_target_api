@@ -2,7 +2,7 @@ workflow:
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == 'main'
       when: never
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "mai"
       variables:
         TAG_NAME: apps2
       when: always
@@ -16,6 +16,6 @@ deploy:
     - ${TAG_NAME}
   script:
   - docker compose down
-  # - docker rmi my_target_gtcom_api-my-target-gtcom-api
-  # - docker rmi my_target_gtcom_api-nginx
+  - docker rmi my_target_gtcom_api-my-target-gtcom-api
+  - docker rmi my_target_gtcom_api-nginx
   - docker compose up -d
