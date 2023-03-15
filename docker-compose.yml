@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  yandex-direct-ecom-api:
+  my-target-gtcom-api:
     build: .
-    container_name: yandex-direct-ecom-api 
+    container_name: my-target-gtcom-api
     restart: always
     environment:
       TZ: Europe/Moscow
@@ -17,12 +17,12 @@ services:
       - /home/get/logs_all/my_target_gtcom_api/:/app/logs/
     
   nginx:
-    container_name: nginx-yandex-direct-ecom-api
+    container_name: nginx-my-target-gtcom-api
     build:
       context: ./nginx
       dockerfile: Dockerfile
     depends_on:
-      -  yandex-direct-ecom-api
+      -  my-target-gtcom-api
     restart: always
     environment:
       - "TZ=Europe/Moscow"
