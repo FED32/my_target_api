@@ -13,24 +13,22 @@ services:
       ECOMRU_PG_USER: ${ECOMRU_PG_USER}
       ECOMRU_PG_PASSWORD: ${ECOMRU_PG_PASSWORD}
       ECOMRU_PG_SSL_MODE: ${ECOMRU_PG_SSL_MODE}
-
-    #command: sh script.sh
     volumes:
       - /home/get/logs_all/my_target_gtcom_api/:/app/logs/
     
   nginx:
-    container_name: nginx-my-target-gtcom-api
+    container_name: nginx-yandex-direct-ecom-api
     build:
       context: ./nginx
       dockerfile: Dockerfile
     depends_on:
-      - my-target-gtcom-api
+      -  yandex-direct-ecom-api
     restart: always
     environment:
       - "TZ=Europe/Moscow"
     ports:
-#      - 8089:80
-#      - 4440:443
+      - 8094:80
+      - 4455:443
     volumes:
       - /home/get/cert:/app/cert
 
