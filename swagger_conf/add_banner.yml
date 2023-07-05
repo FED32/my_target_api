@@ -24,11 +24,11 @@ parameters:
     properties:
       client_id:
         type: "string"
-        example: "eGpvC1xm4t5lpdog"
+        example: "sdfjnedejfne"
         description: Client id
       access_token:
         type: "string"
-        example: "LpcXUUdjDRf0AuB7SuAFwzyD0G3kKtnsdFM5DMSNDkG6RlwJ9MLW1cMu2nnzidSrnH8zLH1SvTb89fnp6tQn9V6YRrLd5WVd"
+        example: "crnBYVTcuebduDxqwhjoswsdIHNYGRC"
         description: Access token
       campaign_id:
         type: "integer"

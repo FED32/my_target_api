@@ -24,11 +24,11 @@ parameters:
     properties:
       client_id:
         type: "string"
-        example: "eGpvC1xm4t5lpdog"
+        example: "defexJHGFssK"
         description: Client id
       access_token:
         type: "string"
-        example: "XaVUPZ0Js7nP33RPyqTbVQC9ZrKm7mxOUdcpOd4IYDYa1O2V39MGytr7bkverAh2qqddTWzb9TlUQGMDvFsJMxCnNycqNJSqLEgemSKKOSRBDS03u8DW8PJCrGkZ9qiH5LpcXUUdjDRf0AuB7SuAFwzyD0G3kKtnsdFM5DMSNDkG6RlwJ9MLW1cMu2nnzidSrnH8zLH1SvTb89fnp6tQn9V6YRrLd5WVd"
+        example: "qiUdjDRf0AuB7Su"
         description: Access token
 responses:
   200:

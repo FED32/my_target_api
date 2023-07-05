@@ -3,7 +3,7 @@ from flask import Response
 from werkzeug.exceptions import BadRequestKeyError
 from ecom_my_target import MyTargetEcomru
 from flasgger import Swagger, swag_from
-from config import Configuration
+from config import Configuration, DB_PARAMS
 from get_token import get_token
 import logger
 # from db_work import put_query
@@ -14,22 +14,8 @@ import os
 
 logger = logger.init_logger()
 
-host = os.environ.get('ECOMRU_PG_HOST', None)
-port = os.environ.get('ECOMRU_PG_PORT', None)
-ssl_mode = os.environ.get('ECOMRU_PG_SSL_MODE', None)
-db_name = os.environ.get('ECOMRU_PG_DB_NAME', None)
-user = os.environ.get('ECOMRU_PG_USER', None)
-password = os.environ.get('ECOMRU_PG_PASSWORD', None)
-target_session_attrs = 'read-write'
 
-# host = 'localhost'
-# port = '5432'
-# db_name = 'postgres'
-# user = 'postgres'
-# password = ' '
-
-db_params = f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
-engine = create_engine(db_params)
+engine = create_engine(DB_PARAMS)
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
@@ -91,11 +77,9 @@ def get_campaigns():
 
         res = mt.get_campaigns()
 
-        # print(res, type(res))
-
         if res["code"] == 200:
             logger.info(f"get campaigns: 200")
-            return jsonify(res["res"])
+            return jsonify(res["result"])
         else:
             logger.error(f"""get campaigns: {res["code"]}""")
             return jsonify(res)
@@ -103,11 +87,9 @@ def get_campaigns():
     except BadRequestKeyError:
         logger.error("get campaigns: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get campaigns: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get campaigns: {ex}')
         raise HttpError(400, f'{ex}')
@@ -140,11 +122,9 @@ def get_campaign_info():
     except BadRequestKeyError:
         logger.error("get campaign info: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get campaign info: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get campaign info: {ex}')
         raise HttpError(400, f'{ex}')
@@ -175,11 +155,9 @@ def get_packages():
     except BadRequestKeyError:
         logger.error("get packages: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get packages: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get packages: {ex}')
         raise HttpError(400, f'{ex}')
@@ -210,11 +188,9 @@ def get_banner_formats():
     except BadRequestKeyError:
         logger.error("get banner formats: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get banner formats: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get banner formats: {ex}')
         raise HttpError(400, f'{ex}')
@@ -247,11 +223,9 @@ def get_pads_trees():
     except BadRequestKeyError:
         logger.error("get pads trees: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get pads trees: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get pads trees: {ex}')
         raise HttpError(400, f'{ex}')
@@ -284,11 +258,9 @@ def get_banner_patterns():
     except BadRequestKeyError:
         logger.error("get banner patterns: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get banner patterns: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get banner patterns: {ex}')
         raise HttpError(400, f'{ex}')
@@ -319,11 +291,9 @@ def get_banners():
     except BadRequestKeyError:
         logger.error("get banners: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("get banners: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'get banners: {ex}')
         raise HttpError(400, f'{ex}')
@@ -454,11 +424,9 @@ def add_campaign():
     except BadRequestKeyError:
         logger.error("add campaign: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("add campaign: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'add campaign: {ex}')
         raise HttpError(400, f'{ex}')
@@ -593,11 +561,9 @@ def update_campaign():
     except BadRequestKeyError:
         logger.error("update campaign: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("update campaign: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'update campaign: {ex}')
         raise HttpError(400, f'{ex}')
@@ -633,11 +599,9 @@ def delete_campaign():
     except BadRequestKeyError:
         logger.error("delete campaign: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("delete campaign: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'delete campaign: {ex}')
         raise HttpError(400, f'{ex}')
@@ -834,11 +798,9 @@ def add_banner():
     except BadRequestKeyError:
         logger.error("add banner: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("add banner: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'add banner: {ex}')
         raise HttpError(400, f'{ex}')
@@ -874,11 +836,9 @@ def add_url():
     except BadRequestKeyError:
         logger.error("add url: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("add url: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'add url: {ex}')
         raise HttpError(400, f'{ex}')
@@ -914,11 +874,9 @@ def read_urls():
     except BadRequestKeyError:
         logger.error("read urls: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("read urls: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'read urls: {ex}')
         raise HttpError(400, f'{ex}')
@@ -959,11 +917,9 @@ def add_content():
     except BadRequestKeyError:
         logger.error("add content: BadRequest")
         return Response(None, 400)
-
     except KeyError:
         logger.error("add content: KeyError")
         return Response(None, 400)
-
     except BaseException as ex:
         logger.error(f'add content: {ex}')
         raise HttpError(400, f'{ex}')

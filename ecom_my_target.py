@@ -111,10 +111,10 @@ class MyTargetEcomru:
                     result += res.json()["items"]
                     offset += limit
                 else:
-                    return {"res": result, "code": 200}
+                    return {"result": result, "code": 200}
             else:
-                print(res.text)
-                return {"res": res.text, "code": res.status_code}
+                # print(res.text)
+                return {"result": res.text, "code": res.status_code}
 
     def get_campaign_info(self, campaign_id: int):
         """Получить информацию о кампании"""
@@ -1017,9 +1017,7 @@ class MyTargetEcomru:
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.access_token}"
         }
-
-        print(url_)
-
+        # print(url_)
         return requests.get(url=url_, headers=headers)
 
     def add_content(self, content_type: str,
@@ -1042,7 +1040,7 @@ class MyTargetEcomru:
             # 'Cache-Control': "no-cache"
         }
 
-        body = f"""------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="width"\r\n\r\n{width}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="height"\r\n\r\n{height}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="file"; filename="{filename}"\r\nContent-Type: application/octet-stream\r\n\r\n{file_string}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"""
+        body = f"""------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="width"\r\n\r\n{width}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="height"\r\n\r\n{height}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="file"; filename="{filename}"\r\nContent-Type: application/form-data\r\n\r\n{file_string}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"""
 
         if content_type == "static":
             url = f"{self.host}/api/v2/content/static.json"
@@ -1065,7 +1063,6 @@ class MyTargetEcomru:
             return None
 
         print(url, "\n\n")
-
         print(body)
 
         return requests.post(url, headers=headers,
